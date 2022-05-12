@@ -6,6 +6,9 @@ database = {
     'user_last_names' : ['barva']
 }
 
+
+
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -19,3 +22,11 @@ def login():
         return {'login' : True, 'fname' : first_name, 'lname' : last_name }
     else:
         return {'login' : False}
+
+posts = []
+
+@app.route("/new_post", methods=["POST"])
+def post():
+    post_data = request.form['post_name']
+    posts.append(post_data)
+    return {'posts' : posts}

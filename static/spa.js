@@ -17,3 +17,14 @@ function my_function() {
     })
     return false;
 }
+
+function new_post() {
+    $.post("/new_post", {
+        post_name : $("#post_name").val(),
+    }, (data, status) => {
+        console.log(data);
+            $('#post_form').append(`${data['posts']}</p>`)
+        // }
+    })
+    return false
+}
